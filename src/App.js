@@ -23,7 +23,12 @@ function App() {
             <h3>Zaloguj się emailem</h3>
             <input type="text" value={email} onChange={handleChange}/>
 
-            {email.length >0 && <div>Błąd: {message}</div>
+
+<button type="button" onClick={() => alert(email)}>
+     Wyświetl mój e-mail w alercie
+</button>
+            {email.length >0 && <div>Wiadomość: {message}</div>
+
  }
 
 
