@@ -4,18 +4,13 @@ import {useState} from "react";
 import "milligram";
 import LoginForm from "./LoginForm";
 
-
+import UserPanel from "./UserPanel";
 
 function App() {
-    const [email, setEmail] = useState('fracz@agh.edu.pl');
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [loggedInUsername,setIsLoggedInUsername] = useState(null);
 
 
-    function handleLogin(email){
-    setEmail(email);
-    setIsLoggedIn(true);
-    }
 
 
 
@@ -23,19 +18,20 @@ function App() {
     <div className = "container">
 
             <h1>Witaj w systemie do zapisów na zajęcia</h1>
-
-            {!isLoggedIn && <LoginForm onLogin={handleLogin} jakis ="alamakota"/>}
-
-{isLoggedIn && <div>
-<h1>Witaj {email }</h1>
-<button  onClick={() => setIsLoggedIn(false)}>Wyloguj</button>
-
-</div>}
+            {
+            loggedInUsername
+            ? <UserPanel email={loggedInUsername}
+            onLogout={()=>setIsLoggedInUsername(null)}/>
+            : <LoginForm onLogin={(email) => setIsLoggedInUsername(email)}/>
 
 
+}
+
+</div>
 
 
-        </div>
+
+
     );
 }
 export default App;
