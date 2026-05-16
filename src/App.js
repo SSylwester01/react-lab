@@ -8,28 +8,27 @@ function App() {
         setEmail(event.target.value);
     }
 
-    let message;
+    let message='';
     if (email.length < 10) {
-        message = <div>Ale masz krótki adres!</div>;
+        message = 'Ale masz krótki adres!';
     } else if (email.length < 15) {
-        message = <div>Twój adres e-mail jest w sam raz.</div>;
+        message = 'Twój adres e-mail jest w sam raz.';
     } else {
-        message = <div>Twój adres e-mail jest stanowczo za długi.</div>;
+        message = 'Twój adres e-mail jest stanowczo za długi.';
     }
 
     return (
         <div>
             <h1>System do zapisów na zajęcia</h1>
-            <h2>Twój e-mail to {email}</h2>
+            <h3>Zaloguj się emailem</h3>
             <input type="text" value={email} onChange={handleChange}/>
 
-            {message}
-            <button
-            type="button"
-            onClick={()=>alert(email)}
-            >
-            Wyswietl mój e-mail w alercie
-            </button>
+            {email.length >0 && <div>Błąd: {message}</div>
+ }
+
+
+
+
 
 
 
