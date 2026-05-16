@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from "react";
 import "milligram";
+import LoginForm from "./LoginForm";
 
 
 
@@ -11,22 +12,19 @@ function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
+    function handleLogin(email){
+    setEmail(email);
+    setIsLoggedIn(true);
+    }
 
 
 
-
-
-//logowanie
     return (
-        <div>
+    <div className = "container">
+
             <h1>Witaj w systemie do zapisów na zajęcia</h1>
 
-            {!isLoggedIn &&<div>
-            <input type="text" onChange={(event)=>setEmail(event.target.value)}/>
-
-&nbsp;
-<button onClick={() => setIsLoggedIn(true)}>Zaloguj się</button>
-</div>}
+            {!isLoggedIn && <LoginForm onLogin={handleLogin} jakis ="alamakota"/>}
 
 {isLoggedIn && <div>
 <h1>Witaj {email }</h1>
