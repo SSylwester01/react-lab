@@ -5,6 +5,11 @@ import "milligram";
 import LoginForm from "./LoginForm";
 
 import UserPanel from "./UserPanel";
+import NewMeetingForm from "./meetings/NewMeetingForm"
+import MeetingsList from "./meetings/MeetingsList"
+import MeetingsPage from "./meetings/MeetingsPage"
+
+
 
 function App() {
 
@@ -18,14 +23,22 @@ function App() {
     <div className = "container">
 
             <h1>Witaj w systemie do zapisów na zajęcia</h1>
-            {
-            loggedInUsername
-            ? <UserPanel email={loggedInUsername}
-            onLogout={()=>setIsLoggedInUsername(null)}/>
-            : <LoginForm onLogin={(email) => setIsLoggedInUsername(email)}/>
+           {
+           loggedInUsername ? (
+               <div>
+                   <UserPanel
+                       email={loggedInUsername}
+                       onLogout={() => setIsLoggedInUsername(null)}
+                   />
 
-
-}
+                   <MeetingsPage />
+               </div>
+           ) : (
+               <LoginForm
+                   onLogin={(email) => setIsLoggedInUsername(email)}
+               />
+           )
+           }
 
 </div>
 
